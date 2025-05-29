@@ -12,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 export default defineConfig({
+  base: '/angry-todolist/', 
   plugins: [
     react(),
     VitePWA({
@@ -25,7 +26,7 @@ export default defineConfig({
       manifest: {
         name: '怒られる ToDo リスト',
         short_name: 'AngryTodo',
-        start_url: '.',
+        start_url: '/angry-todolist/',
         display: 'standalone',
         background_color: '#ffffff',
         icons: [
@@ -42,4 +43,5 @@ export default defineConfig({
     postcss: path.resolve(__dirname, 'postcss.config.cjs'),
   },
 });
+
 
