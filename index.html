@@ -1,13 +1,30 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>怒られるToDoリスト</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>怒られる ToDo リスト</title>
+
+  <!-- Viteが生成するマニフェストは自動的に反映されます -->
+  <!-- ただし手動でpwaマニフェストを参照したいなら以下を追加 -->
+  <!--link rel="manifest" href="/angry-todolist/manifest.webmanifest" /-->
+  
+  <link rel="icon" href="/angry-todolist/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- ReactのスクリプトはViteが自動で挿入 -->
+  <!-- Service Workerの登録はプラグインが自動で行いますが手動登録したい場合は以下 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/angry-todolist/sw.js')
+          .then(reg => console.log('Service Worker registered:', reg.scope))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
 </html>
+
