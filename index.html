@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>怒られる ToDo リスト</title>
 
-  <!-- Viteが生成するマニフェストは自動的に反映されます -->
-  <!-- ただし手動でpwaマニフェストを参照したいなら以下を追加 -->
-  <!--link rel="manifest" href="/angry-todolist/manifest.webmanifest" /-->
-  
-  <link rel="icon" href="/angry-todolist/favicon.ico" type="image/svg+xml" />
+  <!-- PWAマニフェスト -->
+  <link rel="manifest" href="./manifest.webmanifest">
+  <script type="module" src="./registerSW.js"></script>
+  <link rel="icon" href="./favicon.ico">
 </head>
 <body>
   <div id="root"></div>
 
-  <!-- ReactのスクリプトはViteが自動で挿入 -->
-  <!-- Service Workerの登録はプラグインが自動で行いますが手動登録したい場合は以下 -->
+  <script type="module" src="/src/main.tsx"></script>  <!-- ← これが大事 -->
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
